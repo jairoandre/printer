@@ -26,11 +26,16 @@ public class TestDao extends AbstractDao {
 
     List<Map<String, Object>> list = new ArrayList<>();
 
+    int i = 0;
+
     for (Object[] obj : result) {
       Map<String, Object> map = new HashMap<>();
       map.put("codigo", obj[0]);
       map.put("convenio", obj[1]);
       list.add(map);
+      if (i++ > 5) {
+        break;
+      }
     }
 
     return list;
