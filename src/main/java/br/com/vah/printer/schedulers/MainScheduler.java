@@ -28,8 +28,8 @@ public class MainScheduler {
   public void other() {
     try {
       System.out.println("Printing...");
-      //PrintService print = PrinterUtils.loadPrintService("T.I - Brother_HL-6180DW");
-      reportLoader.printReport("nutricao", testDao.list(), null);
+      PrintService print = PrinterUtils.loadPrintService("Microsoft XPS Document Writer");
+      reportLoader.printReport("nutricao", testDao.list(), print);
       Thread.sleep(3000l);
     } catch (InterruptedException ie) {
       ie.printStackTrace();

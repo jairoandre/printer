@@ -23,4 +23,11 @@ public class PrinterUtils {
     return null;
   }
 
+  public static void main(String[] args) {
+    PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
+    for (PrintService print : printServices) {
+      System.out.println(print.getName());
+    }
+  }
+
 }
