@@ -4,6 +4,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRGraphics2DExporter;
 
 import javax.ejb.Stateless;
 import javax.imageio.ImageIO;
@@ -41,6 +42,8 @@ public class ReportLoader {
       JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(list);
       InputStream reportIS = context.getResourceAsStream(String.format("/resources/reports/%s.jasper", reportName));
       JasperPrint jasperPrint = JasperFillManager.fillReport(reportIS, params, ds);
+      JRGraphics2DExporter exporter = new JRGraphics2DExporter();
+      exporter.set
       ByteArrayInputStream in = new ByteArrayInputStream(JasperExportManager.exportReportToPdf(jasperPrint));
       if (printService == null) {
         System.out.println("Sem impressão");
